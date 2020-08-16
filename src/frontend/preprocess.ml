@@ -12,7 +12,7 @@ open Options
 let decl_to_stmt : string -> StructMap.t -> state_var_decl -> stmt
 = fun cname smap (id,eop,vinfo) ->
   (match eop with
-   | None -> get_init_stmt (Var (id,vinfo)) vinfo.vloc
+   | None -> get_init_stmt (Var (id,vinfo)) vinfo.vloc  // None인 이유는 state declaration이 이름만 정의하고 init value는 안주었기 때문
    | Some e -> Assign (Var (id,vinfo), e, vinfo.vloc))
 
 let move_f cid smap decls func =
